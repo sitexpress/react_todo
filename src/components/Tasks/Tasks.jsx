@@ -3,8 +3,9 @@ import axios from 'axios'
 
 import './Tasks.scss'
 import editBtn from '../../assets/edit_btn.svg'
+import Addtaskform from './AddTaskForm';
 
-const Tasks = ({lists, onEditTitle}) => {
+const Tasks = ({lists, onEditTitle, onAddTask, listEmpty}) => {
 
     const editTitle = () => {
         const newTitle = window.prompt('Название списка', lists.name)
@@ -22,15 +23,14 @@ const Tasks = ({lists, onEditTitle}) => {
     return (
         <div>
             <div className="tasks">
-                <h2 className="tasks__title">
+                <h2  style={{color: lists.color.hex}} className="tasks__title">
                     {lists.name} 
                     <img onClick={editTitle} src={editBtn} alt="edit icon" />
                 </h2>
 
                 <div className="tasks__items">
-                {!lists.tasks.length && <h2>Задачи отсутствтуют</h2>}
-                { 
-                    lists.tasks.map((task) => (
+                {!listEmpty && !lists.tasks.length && <h2>Задачи отсутствтуют</h2>}
+                { lists.tasks.map((task) => (
                         <div key={task.id} className="tasks__items-row">
                         <div htmlFor="" className="checkbox">
                             <input id={`task-${task.id}`} type="checkbox" />
@@ -53,6 +53,7 @@ const Tasks = ({lists, onEditTitle}) => {
                     </div>
                     ))
                 }
+                <Addtaskform onAddTask={onAddTask} list={lists}/>
                 </div>
             </div>
         </div>

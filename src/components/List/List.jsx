@@ -20,7 +20,9 @@ const List = ({items, onRemove, isRemovable, onClick, onClickOnItem, activeItem}
             {items.map((item, index) => (
                 <li onClick={onClickOnItem ? () => onClickOnItem(item) : null}
                     key={index} 
-                    className={classNames(item.className, {'active': activeItem && activeItem.id === item.id})}>
+                    className={classNames(item.className, {active: item.active 
+                    ? item.active 
+                    : activeItem && activeItem.id === item.id})}>
                     <i>
                         {item.icon ? item.icon : <Badge name={item.color.name}/>}
                     </i> 

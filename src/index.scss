@@ -24,11 +24,12 @@ code {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	width: 750px;
-	min-height: 530px;
+	width: 100%;
+	height: calc(100vh);
 	border: 1px solid lightgrey;
 	border-radius: 10px;
 	box-shadow: 5px 5px 5px lightgrey;
+	overflow-x: hidden;
 	&__sidebar {
 		background-color: rgb(185, 184, 184);
 		opacity: 0.5;
@@ -40,23 +41,39 @@ code {
 	&__tasks {
 		padding: 60px;
 		flex: 1;
-
+		overflow: auto;
 	}
 }
 
 .btn {
-	height: 37px;
+	height: 34px;
+	width: 145px;
 	box-sizing: border-box;
 	background: #4DD599;
 	border-radius: 4px;
 	color: #fff;
 	cursor: pointer;
 	border: none;
+	font-size: 14px;
 	&:hover {
 		background: darken(#4DD599, 7%);
 	}
 	&:active {
 		background: darken(#4DD599, 10%);
+	}
+
+	&:disabled {
+		background: grey;
+	}
+
+	&--grey {
+		height: 34px;
+		width: 90px;
+		background: #F4F6F8;
+		color: #9C9C9C;
+		&:hover {
+			background: darken(#F4F6F8, 3%);
+		}
 	}
 }
 
@@ -67,6 +84,7 @@ code {
 	border-radius: 4px;
 	padding: 7px 7px 7px 11px;
 	box-sizing: border-box;
+	font-size: 14px;
 	&:focus {
 		border-color: #4b4b4b;
 	}

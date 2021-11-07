@@ -1,4 +1,7 @@
 .tasks {
+    &:not(last-of-type) {
+        margin-bottom: 40px;
+    }
     &__title {
         font-family: Montserrat;
         font-weight: bold;
@@ -22,6 +25,42 @@
             }
         }
     }
+
+    &__form {
+        margin-top: 10px;
+
+        &-block {
+            .btn {
+	        margin-top: 9px;
+		    margin-left: 9px;
+
+            }
+        }
+
+        &-new {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: opacity 0.15s ease-in-out;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            img {
+                width: 15px;
+                height: 15px;
+                margin-left: 10px;
+
+            }
+            span {
+                font-size: 16px;
+                margin-left: 19px;
+            }
+        }
+    }
+
     .checkbox {
         input {
             display: none;

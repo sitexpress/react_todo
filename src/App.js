@@ -1,14 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import './App.scss';
+import {
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from "react-router-dom";
 
+import './App.scss';
 import {List, AddList, Tasks} from './components'
 
 function App() {
-	const [value, setValue] = useState('Все задачи');
-	const [lists, setLists] = useState(null);
-	const [colors, setColors] = useState(null);
-	const [activeItem, setActiveItem] = useState(null);
+	const [value, setValue] = useState('Все задачи')
+	const [lists, setLists] = useState(null)
+	const [colors, setColors] = useState(null)
+	const [activeItem, setActiveItem] = useState(null)
+	let history = useHistory()
 
 
 	useEffect(() => {
@@ -32,6 +39,16 @@ function App() {
 		setLists(newList)
 	}
 
+	const onAddTask = (listId, taskObj) => {
+		const newList = lists.map(item => {
+			if (item.id === listId) {
+				item.tasks = [...item.tasks, taskObj]
+			}
+			return item
+		})
+		setLists(newList)
+	}
+
 	const onEditListTitle = (id, title) => {
 		const newList = lists.map((item) => {
 			if (item.id === id) {
@@ -43,10 +60,24 @@ function App() {
 		setLists(newList)
     }
 
+	useEffect(() => {
+		history.listen(() => {
+			const listId = history.location.pathname.split('lists/')[1]
+			if (lists) {
+				const list = lists.find(list => list.id === Number (listId))
+				setActiveItem(list)
+			}
+		})
+
+	}, [lists, history.location.pathname])
+
 	return (
 		<div className="todo">
 			<div className="todo__sidebar"> 
 			<List 
+				onClickOnItem={() => {
+					history.push(`/`)
+				}}
 				items={[
 					{
 						icon: (
@@ -61,7 +92,6 @@ function App() {
 							),
 						name: value,
 						active: true
-						
 					}
 				]}
 				/>
@@ -69,8 +99,7 @@ function App() {
 				{lists ? (
 					<List 
 					onClickOnItem={(item) => {
-						setActiveItem(item)
-
+						history.push(`/lists/${item.id}`)
 					}}
 					items={lists} 
 					onRemove={(id) => {
@@ -85,7 +114,26 @@ function App() {
 				<AddList onAdd={onAddList} colors={colors}/>
 			</div>
 			<div className="todo__tasks">
-				{lists && activeItem ? <Tasks lists={activeItem} onEditTitle={onEditListTitle}/> : <h2>Выберете задачу.</h2>}
+			<Route exact path="/" >
+				{lists && 
+					lists.map(list => (
+						<Tasks 
+								key={lists.id}
+								lists={list} 
+								onAddTask={onAddTask}
+								onEditTitle={onEditListTitle}
+								listEmpty
+						/>
+				))}
+			</Route>
+			<Route exact path="/lists/:id">
+				{lists && activeItem && 
+					<Tasks 
+					lists={activeItem} 
+					onAddTask={onAddTask}
+					onEditTitle={onEditListTitle}
+				/>}
+			</Route>
 			</div>
 		</div>
 	);
