@@ -10,6 +10,10 @@ import {
 import './App.scss';
 import {List, AddList, Tasks} from './components'
 
+import {Animated} from "react-animated-css";
+import 'animate.css/animate.css';
+
+
 function App() {
 	const [value, setValue] = useState('Все задачи')
 	const [lists, setLists] = useState(null)
@@ -97,6 +101,7 @@ function App() {
 				/>
 				{console.log(activeItem)}
 				{lists ? (
+                    <Animated animationIn="flipInX" animationOut="wobble" isVisible={true}>
 					<List 
 					onClickOnItem={(item) => {
 						history.push(`/lists/${item.id}`)
@@ -104,11 +109,14 @@ function App() {
 					items={lists} 
 					onRemove={(id) => {
 						const newLists = lists.filter(item => item.id !== id)
-						setLists(newLists)
+						setTimeout(() => {setLists(newLists)}, 500)
+						
 						} 
 					}
 					activeItem={activeItem}
 					isRemovable />
+                    </Animated>
+
 				) : 'Loading...'}
 
 				<AddList onAdd={onAddList} colors={colors}/>
@@ -117,6 +125,7 @@ function App() {
 			<Route exact path="/" >
 				{lists && 
 					lists.map(list => (
+						<Animated animationIn="shake" animationOut="fadeOut" isVisible={true}>
 						<Tasks 
 								key={lists.id}
 								lists={list} 
@@ -124,15 +133,19 @@ function App() {
 								onEditTitle={onEditListTitle}
 								listEmpty
 						/>
+						</Animated>
 				))}
 			</Route>
 			<Route exact path="/lists/:id">
 				{lists && activeItem && 
-					<Tasks 
-					lists={activeItem} 
-					onAddTask={onAddTask}
-					onEditTitle={onEditListTitle}
-				/>}
+					<Animated animationIn="shake" animationOut="fadeOut" isVisible={true}>
+						<Tasks 
+						lists={activeItem} 
+						onAddTask={onAddTask}
+						onEditTitle={onEditListTitle}
+						/>
+					</Animated>
+				}
 			</Route>
 			</div>
 		</div>

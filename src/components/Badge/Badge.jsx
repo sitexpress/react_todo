@@ -1,14 +1,17 @@
 import React from 'react';
 import './Badge.scss'
 import classNames from 'classnames'
+import {Animated} from "react-animated-css";
 
-// className={'badge badge--' + name}
 
 const Badge = ({key, name, onClick, className}) => {
     return(
-        <i  onClick={onClick}  
-            className={classNames('badge',  {['badge--' + name]: name}, className)}>
-        </i>
+        <Animated animationIn="zoomInUp" animationOut="fadeOut" isVisible={true}>
+            <i  onClick={onClick}  
+                className={classNames('badge',  {['badge--' + name]: name}, className)}>
+            </i>
+        </Animated>
+
     )
 }
 

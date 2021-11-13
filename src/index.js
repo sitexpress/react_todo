@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {
 	BrowserRouter as Router
 }  from "react-router-dom";
-
+import 'animate.css/animate.css';
 
 ReactDOM.render(
 		<Router>

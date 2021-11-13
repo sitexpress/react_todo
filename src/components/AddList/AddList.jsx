@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Animated} from "react-animated-css";
+import 'animate.css/animate.css';
 
 import List from '../List/List';
 import './AddList.scss';
@@ -20,7 +22,7 @@ const AddList = ({colors, onAdd}) => {
 
     const onClose = () => {
         setVisiblePopup(false)
-        setInputValue('')
+        setInputValue('') 
         selectColor(colors[0].id)
     }
 
@@ -80,12 +82,13 @@ const AddList = ({colors, onAdd}) => {
                     name: 'Добавить список',
                 }
             ]} />
-            {visiblePopup &&             
+            {visiblePopup &&
+                <Animated animationIn="flipInX" animationOut="wobble" isVisible={true}>
                 <div className="add-list__popup">
-                <img 
-                    onClick={onClose} 
-                    src={closeBtn} 
-                    className="add-list__popup-close-btn" alt="close button"/>
+                    <img 
+                        onClick={onClose} 
+                        src={closeBtn} 
+                        className="add-list__popup-close-btn" alt="close button"/>
                     <input  
                         value={inputValue} 
                         onChange={(e) => {setInputValue(e.target.value)}}
@@ -105,6 +108,8 @@ const AddList = ({colors, onAdd}) => {
                         {isLoading ? 'Добавление...' : 'Добавить'}
                     </button>
                 </div>
+                </Animated>             
+
             }
 
         </div>

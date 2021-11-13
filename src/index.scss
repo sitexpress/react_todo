@@ -3,6 +3,8 @@
 	padding: 0;
 	list-style-type: none;
 	outline: none;
+	// overflow-y: hidden;
+	// overflow-x: auto;
 }
 
 body {
@@ -27,7 +29,6 @@ code {
 	width: 100%;
 	height: calc(100vh);
 	border: 1px solid lightgrey;
-	border-radius: 10px;
 	box-shadow: 5px 5px 5px lightgrey;
 	overflow-x: hidden;
 	&__sidebar {

@@ -2,66 +2,31 @@
   "lists": [
     {
       "id": 1,
-      "name": "advav",
+      "name": "Frontend",
       "colorId": 5
     },
     {
-      "id": 2,
-      "name": "щщщ",
-      "colorId": 4
+      "name": "ssdsdsd",
+      "colorId": 1,
+      "id": 2
     },
     {
-      "id": 4,
-      "name": "Книги",
-      "colorId": 2
+      "name": "dddd",
+      "colorId": 1,
+      "id": 3
     },
     {
-      "id": 5,
-      "name": "Личное",
-      "colorId": 1
+      "name": "ыывсы",
+      "colorId": 4,
+      "id": 4
     },
     {
-      "name": "Спорт",
-      "colorId": 3,
-      "id": 6
-    },
-    {
-      "name": "Курс по ReactJS ToDo",
-      "colorId": 7,
-      "id": 7
+      "name": "вамвм",
+      "colorId": 1,
+      "id": 5
     }
   ],
   "tasks": [
-    {
-      "id": 1,
-      "listId": 2,
-      "text": "Изучить JavaScript",
-      "completed": true
-    },
-    {
-      "id": 2,
-      "listId": 2,
-      "text": "Изучить паттерны проектирования",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "listId": 2,
-      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
-    },
-    {
-      "id": 4,
-      "listId": 2,
-      "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
-    },
-    {
-      "listId": 2,
-      "text": "123",
-      "completed": true,
-      "id": 5
-    },
     {
       "listId": 1,
       "text": "test",
@@ -87,36 +52,6 @@
       "id": 9
     },
     {
-      "listId": 4,
-      "text": "Купить 1984!",
-      "completed": true,
-      "id": 10
-    },
-    {
-      "listId": 2,
-      "text": "222",
-      "completed": true,
-      "id": 12
-    },
-    {
-      "listId": 7,
-      "text": "Сделали сайдбар",
-      "completed": true,
-      "id": 15
-    },
-    {
-      "listId": 7,
-      "text": "Сделали список задач",
-      "completed": true,
-      "id": 16
-    },
-    {
-      "listId": 7,
-      "text": "Сделали удаление и редактирование задач и списков",
-      "completed": true,
-      "id": 17
-    },
-    {
       "listId": 1,
       "text": "ыыы",
       "completed": false,
@@ -135,18 +70,6 @@
       "id": 20
     },
     {
-      "listId": 2,
-      "text": "sss",
-      "completed": false,
-      "id": 21
-    },
-    {
-      "listId": 2,
-      "text": "svvs",
-      "completed": false,
-      "id": 22
-    },
-    {
       "listId": 1,
       "text": "dcc",
       "completed": false,
@@ -159,10 +82,16 @@
       "id": 24
     },
     {
-      "listId": 2,
-      "text": "scaa",
+      "listId": 1,
+      "text": "Выучить ин. яз.",
       "completed": false,
       "id": 25
+    },
+    {
+      "listId": 2,
+      "text": "вамвм",
+      "completed": false,
+      "id": 26
     }
   ],
   "colors": [
