@@ -6,9 +6,19 @@
       "colorId": 5
     },
     {
-      "name": "ssdsdsd",
-      "colorId": 1,
+      "name": "dscsdcdscdx",
+      "colorId": 3,
       "id": 2
+    },
+    {
+      "name": "dsczxczxc",
+      "colorId": 6,
+      "id": 3
+    },
+    {
+      "name": "asxasx",
+      "colorId": 4,
+      "id": 4
     }
   ],
   "tasks": [
@@ -73,20 +83,14 @@
       "id": 25
     },
     {
-      "listId": 2,
-      "text": "вамвм",
-      "completed": false,
-      "id": 26
-    },
-    {
-      "listId": 2,
-      "text": "asxa",
+      "listId": 4,
+      "text": "ddddds",
       "completed": false,
       "id": 27
     },
     {
-      "listId": 2,
-      "text": "sacac",
+      "listId": 4,
+      "text": "cdsc",
       "completed": false,
       "id": 28
     }

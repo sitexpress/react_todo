@@ -92,7 +92,7 @@ function App() {
 			.patch('http://localhost:3001/tasks/' + taskObj.id, {
 				text: newTaskText
 			}).catch(() => {
-                alert('Упс, не удалось удалить задачу!')
+                alert('Упс, не удалось отредактировать задачу!')
             })
 	}
 

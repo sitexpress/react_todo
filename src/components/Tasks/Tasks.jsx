@@ -31,8 +31,8 @@ const Tasks = ({lists, onEditTitle, onAddTask, listEmpty, onRemoveTask, onEditTa
                     </h2>
 
                     <div className="tasks__items">
-                    {!listEmpty && !lists.tasks.length ? <h2>Задачи отсутствтуют</h2> : 
-                    lists.tasks.map((task) => (
+                    {!listEmpty && lists.tasks && !lists.tasks.length && (<h2>Задачи отсутствтуют</h2>)}
+                    {lists.tasks && lists.tasks.map((task) => (
                         <Task key={task.id} {...task} lists={lists} onRemove={onRemoveTask} onEdit={onEditTask} />
                         ))
                     }
