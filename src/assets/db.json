@@ -9,21 +9,6 @@
       "name": "ssdsdsd",
       "colorId": 1,
       "id": 2
-    },
-    {
-      "name": "dddd",
-      "colorId": 1,
-      "id": 3
-    },
-    {
-      "name": "ыывсы",
-      "colorId": 4,
-      "id": 4
-    },
-    {
-      "name": "вамвм",
-      "colorId": 1,
-      "id": 5
     }
   ],
   "tasks": [
@@ -92,6 +77,18 @@
       "text": "вамвм",
       "completed": false,
       "id": 26
+    },
+    {
+      "listId": 2,
+      "text": "asxa",
+      "completed": false,
+      "id": 27
+    },
+    {
+      "listId": 2,
+      "text": "sacac",
+      "completed": false,
+      "id": 28
     }
   ],
   "colors": [

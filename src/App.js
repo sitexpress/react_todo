@@ -53,6 +53,49 @@ function App() {
 		setLists(newList)
 	}
 
+	const onRemoveTask = (listId, taskId) =>{
+        if(window.confirm('Вы действительно хотите удалить задачу?')){
+			const newList = lists.map(item => {
+				if(item.id === listId) {
+					item.tasks = item.tasks.filter(task => task.id !== taskId)
+				}
+				return item;
+			})
+			setLists(newList)
+            axios.delete('http://localhost:3001/tasks/' + taskId, {
+            }).catch(() => {
+                alert('Упс, не удалось удалить задачу!')
+            })
+        }
+    }
+
+	const onEditTask = (listId, taskObj) => {
+		const newTaskText = window.prompt('Текст задачи', taskObj.text)
+
+		if(!newTaskText) {
+			return
+		}
+
+		const newList = lists.map(list => {
+			if (list.id === listId) {
+				list.tasks = list.tasks.map(task => {
+					if (task.id === taskObj.id) {
+						task.text = newTaskText
+					}	
+				return task;
+				})
+			}
+			return list;
+		})
+		setLists(newList)
+            axios
+			.patch('http://localhost:3001/tasks/' + taskObj.id, {
+				text: newTaskText
+			}).catch(() => {
+                alert('Упс, не удалось удалить задачу!')
+            })
+	}
+
 	const onEditListTitle = (id, title) => {
 		const newList = lists.map((item) => {
 			if (item.id === id) {
@@ -125,7 +168,6 @@ function App() {
 			<Route exact path="/" >
 				{lists && 
 					lists.map(list => (
-						<Animated animationIn="shake" animationOut="fadeOut" isVisible={true}>
 						<Tasks 
 								key={lists.id}
 								lists={list} 
@@ -133,18 +175,17 @@ function App() {
 								onEditTitle={onEditListTitle}
 								listEmpty
 						/>
-						</Animated>
 				))}
 			</Route>
 			<Route exact path="/lists/:id">
 				{lists && activeItem && 
-					<Animated animationIn="shake" animationOut="fadeOut" isVisible={true}>
 						<Tasks 
 						lists={activeItem} 
 						onAddTask={onAddTask}
 						onEditTitle={onEditListTitle}
+						onRemoveTask={onRemoveTask}
+						onEditTask={onEditTask}
 						/>
-					</Animated>
 				}
 			</Route>
 			</div>
